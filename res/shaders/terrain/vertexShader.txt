@@ -1,0 +1,16 @@
+#version 330 core
+
+in vec3 position;
+in vec3 textureCoordinates;
+in mat4 transformationMatrix;
+
+out vec3 pass_textureCoordinates;
+
+uniform mat4 projectionMatrix;
+uniform mat4 viewMatrix;
+
+void main()
+{
+	gl_Position = projectionMatrix * viewMatrix * transformationMatrix * vec4(position, 1.0);
+	pass_textureCoordinates =  textureCoordinates;
+}

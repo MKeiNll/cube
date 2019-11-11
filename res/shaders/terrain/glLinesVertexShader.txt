@@ -1,0 +1,14 @@
+#version 330 core
+
+in vec3 position;
+
+out vec4 outColor;
+
+uniform mat4 projectionMatrix;
+uniform mat4 viewMatrix;
+
+void main()
+{
+	gl_Position = projectionMatrix * viewMatrix * vec4(position, 1.0);
+	outColor = vec4(0.3, 0.8, 0.1, 1);
+}
