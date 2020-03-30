@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+}
+
+dependencies {
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ex.main.Main',
+                'Class-Path': 'lwjgl.jar'
+        )
+    }
+}
+
+sourceSets.main.java.srcDirs = ['src']
+mainClassName = 'ex.main.Main'
