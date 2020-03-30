@@ -10,14 +10,18 @@ dependencies {
     compile fileTree(dir: 'lib', include: ['*.jar'])
 }
 
+sourceSets.main.java.srcDirs = ['src']
+mainClassName = 'ex.main.Main'
+
 jar {
     manifest {
         attributes(
-                'Main-Class': 'ex.main.Main',
+                'Main-Class': "$mainClassName",
                 'Class-Path': 'lwjgl.jar'
         )
     }
-}
 
-sourceSets.main.java.srcDirs = ['src']
-mainClassName = 'ex.main.Main'
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
